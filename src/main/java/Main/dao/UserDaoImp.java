@@ -27,11 +27,10 @@ public class UserDaoImp implements UserDao {
    }
 
    @Override
-   public void update(int id,String firstName,String lastName) {
-      User tempUser =findeUser(id);
-      System.out.println(firstName);
-      tempUser.setFirstName(firstName);
-      tempUser.setLastName(lastName);
+   public void update(User user) {
+      User tempUser =findeUser(user.getId());
+      tempUser.setFirstName(user.getFirstName());
+      tempUser.setLastName(user.getLastName());
       entityManager.merge(tempUser);
       entityManager.flush();
    }
